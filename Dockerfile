@@ -1,16 +1,25 @@
-FROM node:8
+# --------  Build Stage --------
+FROM node:18 AS builder
 
-LABEL author="Alex Mubarakshin"
+WORKDIR /app
 
-WORKDIR /application
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install --production
 
-COPY /package.json ./
+# Copy source files
+COPY . .
 
-RUN npm install
+# -------- Production Image --------
+FROM node:18-slim
 
-COPY /client ./client
-COPY /server.js ./
+WORKDIR /app
 
-ENV PORT 8080
+# Copy only the built app and node_modules from builder
+COPY --from=builder /app /app
 
-CMD ["sh", "-c", "node server.js -p ${PORT}"]
+# Expose application port
+EXPOSE 3000
+
+# Run the app
+CMD ["npm", "start"]
