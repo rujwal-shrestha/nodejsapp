@@ -1,24 +1,13 @@
 {
-  "name": "magic-cursor",
+  "name": "sample-node-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple Node.js app with Docker multi-stage build",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "author": "Alex Mubarakshin <alm@digt.ru>",
-  "homepage": "https://github.com/AlexMubarakshin/magic-cursor",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AlexMubarakshin/magic-cursor.git"
-  },
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "socket.io": "^2.2.0"
-  },
-  "devDependencies": {
-    "minimist": "^1.2.0"
+    "express": "^4.18.2"
   }
 }
+
